@@ -4,4 +4,23 @@
 
 <br><br />
 
-@*Start tables here*@
+<ul class="list-group">
+    @*@foreach (var hometeam in Model.HomeTeams)*@
+    @*{*@
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="~/Images/RedditLogo.svg.png" class="img-rounded" width="64" height="64">
+                    </div>
+                    <div class="col-xs-10">
+                        <h3>Article Title</h3>
+                        Description of article, just a very short blurb really, not too much more than this...
+                    </div>
+                    <div>
+                        <span class="badge">Comments</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    @*}*@
