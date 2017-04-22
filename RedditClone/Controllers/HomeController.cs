@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RedditClone.Services;
+using RedditClone.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,14 @@ namespace RedditClone.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
-            return View();
+            var vm = new HomePage();
+            vm.Posts = new HomeServices().GetAllPosts();
+            return View(vm);
         }
+
 
         public ActionResult About()
         {
