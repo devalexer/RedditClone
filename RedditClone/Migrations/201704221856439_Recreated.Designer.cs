@@ -7,13 +7,13 @@ namespace RedditClone.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PostsUpdated : IMigrationMetadata
+    public sealed partial class Recreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PostsUpdated));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Recreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704221628582_PostsUpdated"; }
+            get { return "201704221856439_Recreated"; }
         }
         
         string IMigrationMetadata.Source

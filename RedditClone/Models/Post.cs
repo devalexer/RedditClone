@@ -16,8 +16,8 @@ namespace RedditClone.Models
         public DateTime PostedAt { get { return DateTime.Now; } }
 
 
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        //public string UserId { get; set; }
+        //public ApplicationUser User { get; set; }
 
     }
 }

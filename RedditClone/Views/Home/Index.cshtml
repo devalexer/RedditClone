@@ -7,22 +7,23 @@
 <ul class="list-group">
     @foreach (var post in Model.Posts)
     {
-    <li class="list-group-item">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-2">
-                    <img src="@post.Image" class="img" width="100" height="100">
-                </div>
-                <div class="col-xs-10">
-                    <div>
-                        <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
-                        Submitted at @post.PostedAt - X hours ago by Username
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="@post.Image" class="img" width="100" height="100">
                     </div>
+                    <div class="col-xs-10">
+                        <div>
+                            <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
+                            Submitted at @post.PostedAt - X hours ago by Username
+                        </div>
                         <span role="presentation"><a href="#">Comments</a></span> &nbsp; <span role="presentation"><a href="#">Share</a></span>
-                    <div>
+                        <div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </li>
+        </li>
     }
+</ul>

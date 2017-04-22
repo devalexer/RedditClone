@@ -12,11 +12,11 @@ namespace RedditClone.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "RedditClone.Models.ApplicationDbContext";
         }
 
         protected override void Seed(RedditClone.Models.ApplicationDbContext context)
         {
-
             var post = new List<Post>
             {
                 new Post{Title = "Bully gets the dropkick of justice!", Url = "http://i.imgur.com/D1jTcg5.gifv", Image = "/images/bully.jpg", UpVotes = 4, DownVotes = 0},
@@ -27,7 +27,6 @@ namespace RedditClone.Migrations
             };
             post.ForEach(oc => context.Posts.AddOrUpdate(o => o.Title, oc));
             context.SaveChanges();
-
 
             //  This method will be called after migrating to the latest version.
 
