@@ -17,13 +17,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                    <img src="~/Images/RedditLogoSm.svg.png" title="RedditClone" alt="additional title" height=40 width=120/>
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Hot", "Index", "Home")</li>
+                    <li>@Html.ActionLink("New", "New", "Home")</li>
+                    <li>@Html.ActionLink("Rising", "Rising", "Home")</li>
+                    <li>@Html.ActionLink("Controversial", "New", "Home")</li>
+                    <li>@Html.ActionLink("Top", "Rising", "Home")</li>
+                    <li>@Html.ActionLink("Gilded", "New", "Home")</li>
+                    <li>@Html.ActionLink("Wiki", "Rising", "Home")</li>
+                    <li>@Html.ActionLink("Promoted", "New", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
