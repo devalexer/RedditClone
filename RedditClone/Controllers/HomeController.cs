@@ -18,6 +18,12 @@ namespace RedditClone.Controllers
             return View(vm);
         }
 
+        [Authorize]
+        public ActionResult Member()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {

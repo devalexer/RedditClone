@@ -36,6 +36,7 @@ namespace RedditClone.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -123,5 +124,20 @@ namespace RedditClone.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //public ActionResult RegisterUpClick()
+        //{
+            
+        //    return db.Posts.UpVotes++;
+
+        //}
+
+        //public void RegisterDownClick()
+
+        //{
+
+        //    DownVotes++;
+
+        //}
     }
 }
