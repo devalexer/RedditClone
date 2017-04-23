@@ -1,6 +1,12 @@
-﻿@{
+﻿@*@model  IEnumerable<RedditClone.Models.Post>*@
+
+@{
     ViewBag.Title = "Home Page";
 }
+
+<br><br />
+
+<button type="button" class="btn btn-warning navbar-btn" onclick="location.href='@Url.Action("Create", "Posts")'">Submit New Story</button>
 
 <br><br />
 
@@ -16,10 +22,10 @@
                     <div class="col-xs-10">
                         <div>
                             <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
-                            Submitted at @post.PostedAt - X hours ago by Username
+                            Submitted at @post.PostedAt - X hours ago by @post.UserId Username
                         </div>
-                        <span role="presentation"><a href="#">Comments</a></span> &nbsp; <span role="presentation"><a href="#">Share</a></span>
                         <div>
+                            <span role="presentation"><a href="#">Comments</a></span> &nbsp; <span role="presentation"><a href="#">Share</a></span>
                         </div>
                     </div>
                 </div>
@@ -27,3 +33,25 @@
         </li>
     }
 </ul>
+
+<li>
+    <nav aria-label="Page navigation" class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</li>

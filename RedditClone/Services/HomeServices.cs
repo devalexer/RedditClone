@@ -13,5 +13,7 @@ namespace RedditClone.Services
             var rv = new ApplicationDbContext().Posts.ToList();
             return rv;
         }
+
+
     }
 }

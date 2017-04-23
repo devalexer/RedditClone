@@ -2,103 +2,117 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
+using System.Web;
+using System.Web.Mvc;
 using RedditClone.Models;
 
 namespace RedditClone.Controllers
 {
-    public class PostsController : ApiController
+    public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Posts
-        public IQueryable<Post> GetPosts()
+        // GET: Posts
+        public ActionResult Index()
         {
-            return db.Posts;
+            return View(db.Posts.ToList());
         }
 
-        // GET: api/Posts/5
-        [ResponseType(typeof(Post))]
-        public IHttpActionResult GetPost(int id)
+        // GET: Posts/Details/5
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
-
-            return Ok(post);
+            return View(post);
         }
 
-        // PUT: api/Posts/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPost(int id, Post post)
+        // GET: Posts/Create
+        public ActionResult Create()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            return View();
+        }
 
-            if (id != post.Id)
+        // POST: Posts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Title,Url,Image,UpVotes,DownVotes")] Post post)
+        {
+            if (ModelState.IsValid)
             {
-                return BadRequest();
-            }
-
-            db.Entry(post).State = EntityState.Modified;
-
-            try
-            {
+                db.Posts.Add(post);
                 db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PostExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToAction("Index");
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return View(post);
         }
 
-        // POST: api/Posts
-        [ResponseType(typeof(Post))]
-        public IHttpActionResult PostPost(Post post)
+        // GET: Posts/Edit/5
+        public ActionResult Edit(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            db.Posts.Add(post);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
-        }
-
-        // DELETE: api/Posts/5
-        [ResponseType(typeof(Post))]
-        public IHttpActionResult DeletePost(int id)
-        {
             Post post = db.Posts.Find(id);
             if (post == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
+            return View(post);
+        }
 
+        // POST: Posts/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Title,Url,Image,UpVotes,DownVotes")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(post).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(post);
+        }
+
+        // GET: Posts/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        // POST: Posts/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Post post = db.Posts.Find(id);
             db.Posts.Remove(post);
             db.SaveChanges();
-
-            return Ok(post);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -108,11 +122,6 @@ namespace RedditClone.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool PostExists(int id)
-        {
-            return db.Posts.Count(e => e.Id == id) > 0;
         }
     }
 }

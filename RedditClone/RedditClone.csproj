@@ -217,6 +217,22 @@
     <Compile Include="Migrations\201704221904049_PostInfoAdded.Designer.cs">
       <DependentUpon>201704221904049_PostInfoAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704222234063_AppUserRedone.cs" />
+    <Compile Include="Migrations\201704222234063_AppUserRedone.Designer.cs">
+      <DependentUpon>201704222234063_AppUserRedone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704222336099_PostInfoDeleted.cs" />
+    <Compile Include="Migrations\201704222336099_PostInfoDeleted.Designer.cs">
+      <DependentUpon>201704222336099_PostInfoDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704222338100_PostInfoDeletedReadded.cs" />
+    <Compile Include="Migrations\201704222338100_PostInfoDeletedReadded.Designer.cs">
+      <DependentUpon>201704222338100_PostInfoDeletedReadded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704230255095_MinorUpdate.cs" />
+    <Compile Include="Migrations\201704230255095_MinorUpdate.Designer.cs">
+      <DependentUpon>201704230255095_MinorUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -224,6 +240,7 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HomeServices.cs" />
+    <Compile Include="Services\PostServices.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\HomePage.cs" />
   </ItemGroup>
@@ -235,6 +252,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Bully.jpg" />
+    <Content Include="Images\Merkel.jpg" />
     <Content Include="Images\RedditLogo.svg.png" />
     <Content Include="Images\RedditLogoSm.svg.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -287,6 +305,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,6 +338,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704221904049_PostInfoAdded.resx">
       <DependentUpon>201704221904049_PostInfoAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704222234063_AppUserRedone.resx">
+      <DependentUpon>201704222234063_AppUserRedone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704222336099_PostInfoDeleted.resx">
+      <DependentUpon>201704222336099_PostInfoDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704222338100_PostInfoDeletedReadded.resx">
+      <DependentUpon>201704222338100_PostInfoDeletedReadded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704230255095_MinorUpdate.resx">
+      <DependentUpon>201704230255095_MinorUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
