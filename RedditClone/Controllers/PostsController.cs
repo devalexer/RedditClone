@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RedditClone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace RedditClone.Controllers
 {
+    [Authorize]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -36,7 +38,7 @@ namespace RedditClone.Controllers
         }
 
         // GET: Posts/Create
-        [Authorize]
+
         public ActionResult Create()
         {
             return View();
@@ -47,10 +49,11 @@ namespace RedditClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Url,Image,UpVotes,DownVotes")] Post post)
+        public ActionResult Create([Bind(Include = "Title,Url,Image")] Post post)
         {
             if (ModelState.IsValid)
             {
+                //postModel.UserId = HttpContext.User.Identity.GetUserId();
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

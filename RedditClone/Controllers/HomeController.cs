@@ -1,4 +1,6 @@
-﻿using RedditClone.Services;
+﻿using Microsoft.AspNet.Identity;
+using RedditClone.Models;
+using RedditClone.Services;
 using RedditClone.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,13 @@ namespace RedditClone.Controllers
 
         public ActionResult Index()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                var name = HttpContext.User.Identity.Name;
+                var userId = User.Identity.GetUserId();
+                var userName = User.Identity.GetUserName();
+            }
+
             var vm = new HomePage();
             vm.Posts = new HomeServices().GetAllPosts();
             return View(vm);
@@ -38,5 +47,12 @@ namespace RedditClone.Controllers
 
             return View();
         }
+
+        //public ActionResult UpVote()
+        //{
+        //    var model = new PostServices();
+        //    Post.UpVotes++;
+        //    SaveModelToPersistentDataStore(model);
+        //}
     }
 }
