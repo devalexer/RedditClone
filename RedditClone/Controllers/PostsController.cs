@@ -53,13 +53,13 @@ namespace RedditClone.Controllers
         {
             if (ModelState.IsValid)
             {
-                //postModel.UserId = HttpContext.User.Identity.GetUserId();
+                post.UserId = HttpContext.User.Identity.GetUserId();
                 db.Posts.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(post);
+            return View();
         }
 
         // GET: Posts/Edit/5

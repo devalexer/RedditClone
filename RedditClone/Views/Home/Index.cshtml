@@ -1,5 +1,4 @@
-﻿@*@model  IEnumerable<RedditClone.Models.Post>*@
-@*@using RedditClone.Models;*@
+﻿@model  RedditClone.ViewModel.HomePage
 
 @{
     ViewBag.Title = "Home Page";
@@ -9,64 +8,91 @@
 
 @if (HttpContext.Current.User.Identity.IsAuthenticated)
 {
-<button type="button" class="btn btn-warning navbar-btn" onclick="location.href='@Url.Action("Create", "Posts")'">Submit New Story</button>
-<br><br />
+    <button type="button" class="btn btn-warning navbar-btn" onclick="location.href='@Url.Action("Create", "Posts")'">Submit New Story</button>
+    <br><br />
 }
 
 
 
 @foreach (var post in Model.Posts)
 {
-<ul class="list-group">
-    <li class="list-group-item">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-2">
-                    <img src="@post.Image" class="img" width="100" height="100">
-                </div>
-                <div class="col-xs-10">
-                    <div>
-                        <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
-                        Submitted at @post.PostedAt - X hours ago by @*@userName*@ Username
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-2">
+                        @using (Html.BeginForm("Up", "Vote", new { id = post.Id }))
+                        {
+                            <button btn="btn btn-link">
+                                <i class="glyphicon glyphicon-arrow-up"></i>
+                            </button>
+                        }
+
+                        <span>@(post.UpVotes - post.DownVotes)</span>
+                       
+                        @using (Html.BeginForm("Down", "Vote", new { id = post.Id }))
+                        {
+                            <button btn="btn btn-link">
+                                <i class="glyphicon glyphicon-arrow-down"></i>
+                                </button>
+                        }
                     </div>
-                    <div>
-                        <span role="presentation"><a href="#">Comments</a></span> &nbsp; <span role="presentation"><a href="#">Share</a></span>
+
+                    <div class="col-xs-2">
+                        <img src="@post.Image" class="img" width="100" height="100">
                     </div>
-                </div>
+
+                    <div class="col-xs-8">
+                        <div>
+                            <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
+                            Submitted at @post.PostedAt - X hours ago by
+                            @if (post.User != null)
+                                {
+                                <span>@post.User.Email</span>
+                            }
+                            else
+                            {
+                                <span>no user found</span>
+                            }
+                        </div>
+                        <div>
+                            <span role="presentation"><a href="#">Comments</a></span> &nbsp; <span role="presentation"><a href="#">Share</a></span>
+                        </div>
+                    </div>
+
+                 </div>
             </div>
+        </li>
+    </ul>
+}
+
+<nav aria-label="Page navigation" class="text-center">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+@*@if (HttpContext.Current.User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            @Html.Partial("_newBlock")
+            @Html.Partial("_newBlock")
+            @Html.Partial("_newBlock")
         </div>
-    </li>
-</ul>
-}
-
-    <nav aria-label="Page navigation" class="text-center">
-        <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-
-@if (HttpContext.Current.User.Identity.IsAuthenticated)
-{
-    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("RegisterUpClick", "Posts")'">UpClick</button>
-    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("RegisterDownClick", "Posts")'">DownClick</button>
-}
-
-
-
-
-
+    }*@

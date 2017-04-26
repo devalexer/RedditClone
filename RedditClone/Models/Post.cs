@@ -11,9 +11,9 @@ namespace RedditClone.Models
         public string Title { get; set; }
         public string Url { get; set; }
         public string Image { get; set; }
-        public int? UpVotes { get; set; } 
-        public int? DownVotes { get; set; } 
-        public DateTime PostedAt { get { return DateTime.Now; } }
+        public int UpVotes { get; set; } = 0;
+        public int DownVotes { get; set; } = 0;
+        public DateTime PostedAt { get; set; } = DateTime.Now;
 
 
         public string UserId { get; set; }

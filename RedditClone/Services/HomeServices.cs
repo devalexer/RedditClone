@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 
 namespace RedditClone.Services
@@ -10,7 +11,7 @@ namespace RedditClone.Services
     {
         public IEnumerable<Post> GetAllPosts()
         {
-            var rv = new ApplicationDbContext().Posts.ToList();
+            var rv = new ApplicationDbContext().Posts.Include(i => i.User).ToList();
             return rv;
         }
 
