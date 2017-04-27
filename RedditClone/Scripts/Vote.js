@@ -16,6 +16,10 @@
 }
 
 let downVote = (postId) => {
+    let _data = {
+        id: postId
+    }
+
     $.ajax({
         url: "/vote/down",
         data: JSON.stringify({ id: postId }),
@@ -27,3 +31,5 @@ let downVote = (postId) => {
         }
     })
 }
+
+

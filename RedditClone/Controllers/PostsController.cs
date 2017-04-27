@@ -127,20 +127,5 @@ namespace RedditClone.Controllers
             }
             base.Dispose(disposing);
         }
-
-        //public ActionResult RegisterUpClick()
-        //{
-            
-        //    return db.Posts.UpVotes++;
-
-        //}
-
-        //public void RegisterDownClick()
-
-        //{
-
-        //    DownVotes++;
-
-        //}
     }
 }

@@ -14,31 +14,18 @@ namespace RedditClone.Controllers
         {
             var db = new ApplicationDbContext();
             var post = db.Posts.FirstOrDefault(f => f.Id == id);
-            if (post == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            if (post.UpVotes == null)
-            {
-                post.UpVotes = 0;
-            }
             post.UpVotes += 1;
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return PartialView("_voteDisplay", post);
         }
-
         // GET: Vote
         public ActionResult Down(int id)
         {
             var db = new ApplicationDbContext();
             var post = db.Posts.FirstOrDefault(f => f.Id == id);
-            if (post == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             post.DownVotes += 1;
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return PartialView("_voteDisplay", post);
         }
     }
 }

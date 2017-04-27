@@ -13,7 +13,6 @@
 }
 
 
-
 @foreach (var post in Model.Posts)
 {
     <ul class="list-group">
@@ -21,23 +20,9 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-xs-2">
-                        @using (Html.BeginForm("Up", "Vote", new { id = post.Id }))
-                        {
-                            <button btn="btn btn-link">
-                                <i class="glyphicon glyphicon-arrow-up"></i>
-                            </button>
-                        }
-
-                        <span>@(post.UpVotes - post.DownVotes)</span>
-                       
-                        @using (Html.BeginForm("Down", "Vote", new { id = post.Id }))
-                        {
-                            <button btn="btn btn-link">
-                                <i class="glyphicon glyphicon-arrow-down"></i>
-                                </button>
-                        }
-                    </div>
+                        <div class="col-xs-2" id="voteContainer-@post.Id">
+                            @Html.Partial("_voteDisplay", post)
+                        </div>
 
                     <div class="col-xs-2">
                         <img src="@post.Image" class="img" width="100" height="100">
@@ -46,7 +31,7 @@
                     <div class="col-xs-8">
                         <div>
                             <h3><a href="@post.Url" title="@post.Title">@post.Title</a></h3>
-                            Submitted at @post.PostedAt - X hours ago by
+                            Submitted at @post.PostedAt.ToShortDateString() - X hours ago by
                             @if (post.User != null)
                                 {
                                 <span>@post.User.Email</span>
