@@ -1,5 +1,5 @@
 ﻿.navbar {
-    background-color: #cee3f8;
+    background-color: purple, #cee3f8;
 }
 
 .navbar-collapse {
@@ -38,4 +38,12 @@ input,
 select,
 textarea {
     max-width: 480px;
+}
+
+.clicked{
+    color: orange;
+}
+
+.clicked:hover{
+    color: darkorange;
 }

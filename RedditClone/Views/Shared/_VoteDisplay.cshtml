@@ -1,8 +1,19 @@
-﻿@model RedditClone.Models.Post
+﻿@model RedditClone.ViewModel.VoteButtonContainer
 
-<button btn="btn btn-link" onclick="upVote(@Model.Id);"><i class="glyphicon glyphicon-arrow-up"></i></button>
+@{ var upVoteClass = "";
+    var downVoteClass = "";
+    if (Model.VoteValue == 1)
+    {
+        upVoteClass = "clicked";
+    }else if (Model.VoteValue == -1)
+    {
+        downVoteClass = "clicked";
+    }
+        }
 
-<span>@(Model.UpVotes - Model.DownVotes)</span>
+<button btn="class btn-link @upVoteClass" onclick="(@Model.Post.Id);"><i class="glyphicon glyphicon-arrow-up"></i></button>
 
-<button btn="btn btn-link" onclick="downVote(@Model.Id);"><i class="glyphicon glyphicon-arrow-down"></i></button>
+<span>@(Model.Post.UpVotes - Model.Post.DownVotes)</span>
+
+<button btn="class btn-link @downVoteClass" onclick="downVote(@Model.Post.Id);"><i class="glyphicon glyphicon-arrow-down"></i></button>
 

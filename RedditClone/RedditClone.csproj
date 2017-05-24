@@ -206,42 +206,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704221855191_InitialCreate.cs" />
-    <Compile Include="Migrations\201704221855191_InitialCreate.Designer.cs">
-      <DependentUpon>201704221855191_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704221856439_Recreated.cs" />
-    <Compile Include="Migrations\201704221856439_Recreated.Designer.cs">
-      <DependentUpon>201704221856439_Recreated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704221904049_PostInfoAdded.cs" />
-    <Compile Include="Migrations\201704221904049_PostInfoAdded.Designer.cs">
-      <DependentUpon>201704221904049_PostInfoAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704222234063_AppUserRedone.cs" />
-    <Compile Include="Migrations\201704222234063_AppUserRedone.Designer.cs">
-      <DependentUpon>201704222234063_AppUserRedone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704222336099_PostInfoDeleted.cs" />
-    <Compile Include="Migrations\201704222336099_PostInfoDeleted.Designer.cs">
-      <DependentUpon>201704222336099_PostInfoDeleted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704222338100_PostInfoDeletedReadded.cs" />
-    <Compile Include="Migrations\201704222338100_PostInfoDeletedReadded.Designer.cs">
-      <DependentUpon>201704222338100_PostInfoDeletedReadded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704230255095_MinorUpdate.cs" />
-    <Compile Include="Migrations\201704230255095_MinorUpdate.Designer.cs">
-      <DependentUpon>201704230255095_MinorUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704262003248_DefaultsAdded.cs" />
-    <Compile Include="Migrations\201704262003248_DefaultsAdded.Designer.cs">
-      <DependentUpon>201704262003248_DefaultsAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704262038349_RemovedNullFromVoteCount.cs" />
-    <Compile Include="Migrations\201704262038349_RemovedNullFromVoteCount.Designer.cs">
-      <DependentUpon>201704262038349_RemovedNullFromVoteCount.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -252,7 +216,7 @@
     <Compile Include="Services\PostServices.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\HomePage.cs" />
-    <Compile Include="ViewModel\VotingViewModel.cs" />
+    <Compile Include="ViewModel\VoteButtonContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -279,7 +243,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\Vote.js" />
+    <Content Include="Scripts\vote.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -341,35 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704221855191_InitialCreate.resx">
-      <DependentUpon>201704221855191_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704221856439_Recreated.resx">
-      <DependentUpon>201704221856439_Recreated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704221904049_PostInfoAdded.resx">
-      <DependentUpon>201704221904049_PostInfoAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704222234063_AppUserRedone.resx">
-      <DependentUpon>201704222234063_AppUserRedone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704222336099_PostInfoDeleted.resx">
-      <DependentUpon>201704222336099_PostInfoDeleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704222338100_PostInfoDeletedReadded.resx">
-      <DependentUpon>201704222338100_PostInfoDeletedReadded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704230255095_MinorUpdate.resx">
-      <DependentUpon>201704230255095_MinorUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704262003248_DefaultsAdded.resx">
-      <DependentUpon>201704262003248_DefaultsAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704262038349_RemovedNullFromVoteCount.resx">
-      <DependentUpon>201704262038349_RemovedNullFromVoteCount.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
