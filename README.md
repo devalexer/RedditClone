@@ -37,5 +37,5 @@ Main Page
 
 Landing Page:
 
-<img src="#">
+<img src="https://raw.githubusercontent.com/devalexer/RedditClone/master/media/Home.png">
 
